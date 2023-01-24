@@ -90,32 +90,32 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
     } else if(interaction_type == 5) {
         const custom_id = interaction.data.custom_id
 
-        // await fetch(`https://discord.com/api/interactions/${interaction.id}/${interaction.token}/callback`, {
-        //     method: "POST",
-        //     headers: {
-        //         "Authorization": `Bot ${process.env.token}`,
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: JSON.stringify({
-        //         type: 5,
-        //         data: {
-        //             flags: 64
-        //         }
-        //     })
-        // })
+        await fetch(`https://discord.com/api/interactions/${interaction.id}/${interaction.token}/callback`, {
+            method: "POST",
+            headers: {
+                "Authorization": `Bot ${process.env.token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                type: 5,
+                data: {
+                    flags: 64
+                }
+            })
+        })
 
         if (custom_id == `cool_modal`) {
             
-            await fetch(`https://discord.com/api/interactions/${interaction.id}/${interaction.token}/callback`, {
-				method: "POST",
+            await fetch(`https://discord.com/api/webhooks/${interaction.application_id}/${interaction.token}/messages/@original`, {
+				method: "PATCH",
 				headers: {
 					"Authorization": `Bot ${process.env.token}`,
 					"Content-Type": "application/json"
 				},
 				body: JSON.stringify({
-                    type: 4,
+                    // type: 4,
 					data: {
-						flags: 64,
+						// flags: 64,
 						content: "Your Demo Has been Successfully Submitted! Looking Forward for you to show off your work! Make sure to join us at our next Office Hours."
 					}
 				})
