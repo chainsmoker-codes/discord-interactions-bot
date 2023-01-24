@@ -9,12 +9,12 @@ const app = express()
 app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req, res) => {
 
     const interaction = req.body
-    const interaction_type = interaction.data.type
+    const interaction_type = interaction.type
 
-    if(interaction_type == 1) {
+    if(interaction_type == 2) {
         const command_name = interaction.data.name
 
-        if(command_name !== `submit`) {
+        if(command_name == `submit`) {
             await fetch(`https://discord.com/api/interactions/${interaction.id}/${interaction.token}/callback`, {
                     method: "POST",
                     headers: {
@@ -84,10 +84,10 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
                     })
                 })
 
-            res.sendStatus(200)
+            return res.sendStatus(200)
         }
 
-    } else if(interaction_type == 3) {
+    } else if(interaction_type == 5) {
         const custom_id = interaction.data.custom_id
 
         await fetch(`https://discord.com/api/interactions/${interaction.id}/${interaction.token}/callback`, {
@@ -107,13 +107,12 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
         if (custom_id == `cool_modal`) {
             
             await fetch(`https://discord.com/api/interactions/${interaction.id}/${interaction.token}/callback`, {
-				method: "POST",
+				method: "PATCH",
 				headers: {
-					"Authorization": `Bot ${process.env.new_web_bot_token}`,
+					"Authorization": `Bot ${process.env.token}`,
 					"Content-Type": "application/json"
 				},
 				body: JSON.stringify({
-					type: 4,
 					data: {
 						flags: 64,
 						content: "Your Demo Has been Successfully Submitted! Looking Forward for you to show off your work! Make sure to join us at our next Office Hours."
@@ -125,7 +124,10 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
             
             res.sendStatus(200)
 
-        } else if(custom_id == 'accept') {
+        }
+    } else if (interaction_type == 3) {
+        const custom_id = interaction.data.custom_id
+        if(custom_id == 'accept') {
 
             await fetch(`https://discord.com/api/webhooks/${interaction.application_id}/${interaction.token}/messages/@original`, {
                 method: "PATCH",
@@ -164,7 +166,6 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
 
             res.sendStatus(200)
         }
-        
     }
 })
 
