@@ -87,7 +87,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
             return res.sendStatus(200)
         }
 
-    } else if(interaction_type == 5) {
+    } else if(interaction_type == 5 || interaction_type == 3) {
         const custom_id = interaction.data.custom_id
 
         await fetch(`https://discord.com/api/interactions/${interaction.id}/${interaction.token}/callback`, {
@@ -121,10 +121,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
             
             res.sendStatus(200)
 
-        }
-    } else if (interaction_type == 3) {
-        const custom_id = interaction.data.custom_id
-        if(custom_id == 'accept') {
+        } else if(custom_id == 'accept') {
 
             await fetch(`https://discord.com/api/webhooks/${interaction.application_id}/${interaction.token}/messages/@original`, {
                 method: "PATCH",
