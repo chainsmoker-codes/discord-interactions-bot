@@ -165,6 +165,77 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
             })
 
             res.sendStatus(200)
+        } else if(custom_id == 'show_modal') {
+            await fetch(`https://discord.com/api/interactions/${interaction.id}/${interaction.token}/callback`, {
+                    method: "POST",
+                    headers: {
+                        "Authorization": `Bot ${process.env.new_web_bot_token}`,
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        "type": 9,
+                        "data": {
+                            "title": "Office Hours Demo",
+                              "custom_id": "cool_modal",
+                              "components": [
+                                {
+                                    "type": 1,
+                                    "components": [{
+                                          "type": 4,
+                                          "custom_id": "repo",
+                                          "label": "Demo Github Repo",
+                                          "style": 1,
+                                          "min_length": 1,
+                                          "max_length": 100,
+                                          "placeholder": "Eg. https://github.com/user/repo_name",
+                                         "required": true
+                                       }]
+                                  },
+                                {
+                                    "type": 1,
+                                    "components": [{
+                                          "type": 4,
+                                          "custom_id": "cyclic_link",
+                                          "label": "Demo Link",
+                                          "style": 1,
+                                          "min_length": 1,
+                                          "max_length": 100,
+                                          "placeholder": "For Eg: https://your-app-id.cyclic.app/",
+                                         "required": true
+                                       }]
+                                  },
+                                {
+                                    "type": 1,
+                                    "components": [{
+                                        "type": 4,
+                                        "custom_id": "site_desc",
+                                        "label": "Demo Site Description",
+                                        "style": 2,
+                                        "min_length": 1,
+                                        "max_length": 500,
+                                        "placeholder": "Share a bit about your app/site.",
+                                        "required": true
+                                        }]
+                                },
+                                {
+                                    "type": 1,
+                                    "components": [{
+                                        "type": 4,
+                                        "custom_id": "other_ques",
+                                        "label": "Other comments or questions?",
+                                        "style": 2,
+                                        "min_length": 1,
+                                        "max_length": 500,
+                                        "placeholder": "Feel Free to ask anything.",
+                                        "required": false
+                                        }]
+                                }
+                            ]
+                        }
+                    })
+                })
+
+                return res.sendStatus(200)
         }
     }
 })
