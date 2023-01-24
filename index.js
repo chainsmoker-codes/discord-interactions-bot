@@ -113,11 +113,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
 					"Content-Type": "application/json"
 				},
 				body: JSON.stringify({
-                    // type: 4,
-					data: {
-						// flags: 64,
-						content: "Your Demo Has been Successfully Submitted! Looking Forward for you to show off your work! Make sure to join us at our next Office Hours."
-					}
+                    content: "Your Demo Has been Successfully Submitted! Looking Forward for you to show off your work! Make sure to join us at our next Office Hours."
 				})
 			})
 
