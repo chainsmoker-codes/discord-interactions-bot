@@ -9,7 +9,7 @@ async function modal_handler(interaction, req) {
     await fetch(`https://discord.com/api/channels/${process.env.log_channel}/messages`, {
 		method: "POST",
 		headers: {
-			"Authorization": `Bot ${process.env.new_web_bot_token}`,
+			"Authorization": `Bot ${process.env.token}`,
 			"Content-Type": "application/json"
 		},
 		body: JSON.stringify({
