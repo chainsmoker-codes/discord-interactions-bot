@@ -18,7 +18,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
             await fetch(`https://discord.com/api/interactions/${interaction.id}/${interaction.token}/callback`, {
                     method: "POST",
                     headers: {
-                        "Authorization": `Bot ${process.env.new_web_bot_token}`,
+                        "Authorization": `Bot ${process.env.token}`,
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
