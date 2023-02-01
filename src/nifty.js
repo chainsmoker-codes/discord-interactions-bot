@@ -36,7 +36,7 @@ async function nifty() {
     const a = await fetch(`https://discord.com/api/guilds/${process.env.guild_id_2}/members/${process.env.nifty_id}`, {
         method: "PATCH",
         headers: {
-            "Authorization": `Bot ${process.env.NIFTY_TOKEN}`,
+            "Authorization": `Bot ${process.env.TWS_TOKEN}`,
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
@@ -81,7 +81,7 @@ async function niftybank() {
     const a = await fetch(`https://discord.com/api/guilds/${process.env.guild_id_2}/members/${process.env.banknifty_id}`, {
         method: "PATCH",
         headers: {
-            "Authorization": `Bot ${process.env.NIFTY_BANK_TOKEN}`,
+            "Authorization": `Bot ${process.env.TWS_TOKEN}`,
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
@@ -123,7 +123,7 @@ async function sgx() {
     await fetch(`https://discord.com/api/guilds/${process.env.guild_id_2}/members/${process.env.sgxnifty_id}`, {
         method: "PATCH",
         headers: {
-            "Authorization": `Bot ${process.env.SGX_TOKEN}`,
+            "Authorization": `Bot ${process.env.TWS_TOKEN}`,
             "Content-Type": "application/json"
         },
         body: JSON.stringify({

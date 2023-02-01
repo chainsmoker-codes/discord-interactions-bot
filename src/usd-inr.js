@@ -36,7 +36,7 @@ async function converter() {
     const a = await fetch(`https://discord.com/api/guilds/${process.env.guild_id_2}/members/${process.env.usdinr_id}`, {
         method: "PATCH",
         headers: {
-            "Authorization": `Bot ${process.env.UI_TOKEN}`,
+            "Authorization": `Bot ${process.env.TWS_TOKEN}`,
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
