@@ -65,11 +65,11 @@ async function sgx() {
     const value = $("#indexes-div > div:nth-child(1) > div:nth-child(3) > table > tbody > tr > td:nth-child(1)").text().trim()
     const percentage = $("#indexes-div > div:nth-child(1) > div:nth-child(3) > table > tbody > tr > td:nth-child(3)").contents().first().text()
     if(percentage[0] == `+`) {
-        roles = ['1070278187407388763', '1011635113928429651', '1070273626751897601', '1070308288404672612']
+        roles = ['1070278187407388763', '1011635113928429651', '1070274133662892076', '1070308288404672612']
         nick = `▲`
     } else if (percentage[0] == `-`) {
         nick = `▼`
-        roles = ['1070278187407388763', '1011635113928429651', '1070273626751897601', '1070308485058801724']
+        roles = ['1070278187407388763', '1011635113928429651', '1070274133662892076', '1070308485058801724']
     }
     const a = await fetch(`https://discord.com/api/guilds/${process.env.guild_id}/members/${process.env.sgxnifty_id}`, {
         method: "PATCH",
