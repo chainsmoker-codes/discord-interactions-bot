@@ -8,11 +8,11 @@ async function nifty() {
     const reqdata = data.data[0]
     var nick
 
-    if(reqdata.percentChange.toString() == `+`) {
+    if(reqdata.percentChange.toString()[0] == `+`) {
         roles = ['1070278187407388763', '1011635113928429651', '1070274725189787682', '1070308288404672612']
         nick = `▲`
         console.log(`this`)
-    } else if (reqdata.percentChange.toString() == `-`) {
+    } else if (reqdata.percentChange.toString()[0] == `-`) {
         nick = `▼`
         roles = ['1070278187407388763', '1011635113928429651', '1070274725189787682', '1070308485058801724']
         console.log(`that`)
