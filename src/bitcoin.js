@@ -25,7 +25,7 @@ async function bitchcoin() {
         another_roles.push(`1070379081302032474`)
     }
 
-    await fetch(`https://discord.com/api/guilds/${process.env.guild_id}/members/${process.env.btc_id}`, {
+    const a = await fetch(`https://discord.com/api/guilds/${process.env.guild_id}/members/${process.env.btc_id}`, {
         method: "PATCH",
         headers: {
             "Authorization": `Bot ${process.env.DTC_TOKEN}`,
@@ -36,6 +36,9 @@ async function bitchcoin() {
             roles: roles
         })
     })
+
+    const b = await a.text()
+    console.log(b)
 
     // const a = await fetch(`https://discord.com/api/guilds/${process.env.guild_id_2}/members/${process.env.btc_id}`, {
     //     method: "PATCH",
