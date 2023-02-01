@@ -13,9 +13,9 @@ async function converter() {
 
     if(percentage[0] == `+`) {
         roles = ['1070278187407388763', '1011635113928429651', '1070274725189787682', '1070308288404672612']
-        // nick = ``
+        nick = `▲`
     } else if (percentage[0] == `-`) {
-        // nick = ``
+        nick = `▼`
         roles = ['1070278187407388763', '1011635113928429651', '1070274725189787682', '1070308485058801724']
     }
 
@@ -26,7 +26,7 @@ async function converter() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            nick: `$ / ₹ : ${price}`,
+            nick: `$ ↦ ₹: ${price}`,
             roles: roles
         })
     })
