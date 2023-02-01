@@ -85,6 +85,8 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
                 })
 
             return res.sendStatus(200)
+        } else if(command_name == `create`) {
+
         }
 
     } else if(interaction_type == 5 || interaction_type == 3) {
@@ -143,7 +145,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
                         
             res.sendStatus(200)
 
-        }  else if(custom_id == 'self_roles') {
+        }  else if(custom_id == 'make') {
 
             await update_roles(interaction)
     
@@ -161,6 +163,26 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
             res.sendStatus(200)
         }
     }
+})
+
+app.post('nifty', verifyKeyMiddleware(process.env.nifty), async (req, res) => {
+    res.sendStatus(200)
+})
+
+app.post('/banknifty', verifyKeyMiddleware(process.env.banknifty), async (req, res) => {
+    res.sendStatus(200)
+})
+
+app.post('/sgxnifty', verifyKeyMiddleware(process.env.sgxnifty), async (req, res) => {
+    res.sendStatus(200)
+})
+
+app.post('/usdinr', verifyKeyMiddleware(process.env.usdinr), async (req, res) => {
+    res.sendStatus(200)
+})
+
+app.post('/crudeoil', verifyKeyMiddleware(process.env.crudeoil), async (req, res) => {
+    res.sendStatus(200)
 })
 
 app.listen("3000", () => console.log(`Server Is Running, You better catch it!`))
