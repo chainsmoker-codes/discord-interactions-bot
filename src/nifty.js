@@ -1,5 +1,6 @@
 const { NseIndia } = require('stock-nse-india')
 const fetch = require('node-fetch')
+const cheerio = require('cheerio')
 
 const nse = new NseIndia()
 
@@ -44,7 +45,7 @@ async function niftybank() {
         console.log(nick)
     }
 
-    const response = await fetch(`https://discord.com/api/guilds/${process.env.guild_id}/members/${process.env.banknifty_id}`, {
+    await fetch(`https://discord.com/api/guilds/${process.env.guild_id}/members/${process.env.banknifty_id}`, {
         method: "PATCH",
         headers: {
             "Authorization": `Bot ${process.env.DTC_TOKEN}`,
@@ -57,4 +58,30 @@ async function niftybank() {
     })
 }
 
-module.exports = { nifty, niftybank }
+async function sgx() {
+    const response = await fetch('https://sgxnifty.org/')
+    const body = await response.text()
+    const $ = cheerio.load(body)
+    const value = $("#indexes-div > div:nth-child(1) > div:nth-child(3) > table > tbody > tr > td:nth-child(1)").text().trim()
+    const percentage = $("#indexes-div > div:nth-child(1) > div:nth-child(3) > table > tbody > tr > td:nth-child(3)").contents().first().text()
+    if(percentage[0] == `+`) {
+        roles = ['1070278187407388763', '1011635113928429651', '1070273626751897601', '1070308288404672612']
+        nick = `▲`
+    } else if (percentage[0] == `-`) {
+        nick = `▼`
+        roles = ['1070278187407388763', '1011635113928429651', '1070273626751897601', '1070308485058801724']
+    }
+    await fetch(`https://discord.com/api/guilds/${process.env.guild_id}/members/${process.env.sgxnifty_id}`, {
+        method: "PATCH",
+        headers: {
+            "Authorization": `Bot ${process.env.DTC_TOKEN}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            nick: `${nick} SGX: ${value}`,
+            roles: roles
+        })
+    })
+}
+
+module.exports = { nifty, niftybank, sgx }

@@ -4,7 +4,7 @@ const { verifyKeyMiddleware } = require('discord-interactions')
 const { update_roles } = require('./role-update')
 const { modal_handler } = require('./modal-handler')
 const { converter } = require('./src/usd-inr')
-const { nifty, niftybank } = require('./src/nifty')
+const { nifty, niftybank, sgx } = require('./src/nifty')
 
 const app = express()
 
@@ -191,6 +191,7 @@ app.get('/prices', async (req, res) => {
     await converter()
     await nifty()
     await niftybank()
+    await sgx()
     res.sendStatus(200)
 })
 
