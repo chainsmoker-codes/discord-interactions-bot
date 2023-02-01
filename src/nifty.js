@@ -71,7 +71,7 @@ async function sgx() {
         nick = `▼`
         roles = ['1070278187407388763', '1011635113928429651', '1070273626751897601', '1070308485058801724']
     }
-    await fetch(`https://discord.com/api/guilds/${process.env.guild_id}/members/${process.env.sgxnifty_id}`, {
+    const a = await fetch(`https://discord.com/api/guilds/${process.env.guild_id}/members/${process.env.sgxnifty_id}`, {
         method: "PATCH",
         headers: {
             "Authorization": `Bot ${process.env.DTC_TOKEN}`,
@@ -82,6 +82,8 @@ async function sgx() {
             roles: roles
         })
     })
+    const b = await a.text()
+    console.log(b)
 }
 
 module.exports = { nifty, niftybank, sgx }
