@@ -28,7 +28,7 @@ async function nifty() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            nick: `${nick} N50: ${reqdata.last}`,
+            nick: `${nick} │ N50: ${reqdata.last}`,
             roles: roles
         })
     })
@@ -40,7 +40,7 @@ async function nifty() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            nick: `${nick} N50: ${reqdata.last}`,
+            nick: `${nick} │ N50: ${reqdata.last}`,
             roles: another_roles
         })
     })
@@ -73,7 +73,7 @@ async function niftybank() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            nick: `${nick} NBANK: ${reqdata.last}`,
+            nick: `${nick} │ NBANK: ${reqdata.last}`,
             roles: roles
         })
     })
@@ -85,7 +85,7 @@ async function niftybank() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            nick: `${nick} NBANK: ${reqdata.last}`,
+            nick: `${nick} │ NBANK: ${reqdata.last}`,
             roles: another_roles
         })
     })
@@ -116,7 +116,7 @@ async function sgx() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            nick: `${nick} SGX: ${value}`,
+            nick: `${nick} │ SGX: ${value}`,
             roles: roles
         })
     })
@@ -127,7 +127,7 @@ async function sgx() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            nick: `${nick} SGX: ${value}`,
+            nick: `${nick} │ SGX: ${value}`,
             roles: another_roles
         })
     })

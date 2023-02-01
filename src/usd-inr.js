@@ -31,7 +31,7 @@ async function converter() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            nick: `${nick} $ ↦ ₹: ${price}`,
+            nick: `${nick} │ $ ↔ ₹: ${price}`,
             roles: roles
         })
     })
@@ -43,7 +43,7 @@ async function converter() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            nick: `${nick} $ ↦ ₹: ${price}`,
+            nick: `${nick} │ $ ↔ ₹: ${price}`,
             roles: another_roles
         })
     })
