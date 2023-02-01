@@ -165,7 +165,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
     }
 })
 
-app.post('nifty', verifyKeyMiddleware(process.env.nifty), async (req, res) => {
+app.post('/nifty', verifyKeyMiddleware(process.env.nifty), async (req, res) => {
     res.sendStatus(200)
 })
 
