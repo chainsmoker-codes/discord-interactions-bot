@@ -9,14 +9,16 @@ async function nifty() {
     const reqdata = data.data[0]
     var nick
 
+    var another_roles = ['1070376219230601316', '1052981220469919774', '1070377248013701162']
+
     if(reqdata.percentChange.toString()[0] == `+`) {
         roles = ['1070278187407388763', '1011635113928429651', '1070272067662008393', '1070308288404672612']
-        another_roles = ['1070376219230601316', '1052981220469919774', '1070377248013701162', '1070378999710236732']
         nick = `▲`
+        another_roles.push(`1070378999710236732`)
     } else if (reqdata.percentChange.toString()[0] == `-`) {
         nick = `▼`
         roles = ['1070278187407388763', '1011635113928429651', '1070272067662008393', '1070308485058801724']
-        another_roles = ['1070376219230601316', '1052981220469919774', '1070377248013701162', '1070379081302032474']
+        another_roles.push(`1070379081302032474`)
     }
 
     await fetch(`https://discord.com/api/guilds/${process.env.guild_id}/members/${process.env.nifty_id}`, {
