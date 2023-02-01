@@ -3,6 +3,7 @@ const fetch = require('node-fetch')
 const { verifyKeyMiddleware } = require('discord-interactions')
 const { update_roles } = require('./role-update')
 const { modal_handler } = require('./modal-handler')
+const { converter } = require('./src/usd-inr')
 
 const app = express()
 
@@ -182,6 +183,11 @@ app.post('/usdinr', verifyKeyMiddleware(process.env.usdinr), async (req, res) =>
 })
 
 app.post('/crudeoil', verifyKeyMiddleware(process.env.crudeoil), async (req, res) => {
+    res.sendStatus(200)
+})
+
+app.get('/prices', async (req, res) => {
+    await converter()
     res.sendStatus(200)
 })
 

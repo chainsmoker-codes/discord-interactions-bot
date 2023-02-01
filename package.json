@@ -9,6 +9,7 @@
   "author": "chainsmoker-codes",
   "license": "ISC",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
     "discord-interactions": "^3.2.0",
     "express": "^4.18.2",
     "node-fetch": "^2.6.7"
