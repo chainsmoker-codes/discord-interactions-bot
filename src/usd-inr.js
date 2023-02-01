@@ -12,10 +12,12 @@ async function converter() {
     var nick
 
     if(percentage[0] == `+`) {
+        another_roles = ['1070376219230601316', '1052981220469919774', '1070378118562451488', '1070378999710236732']
         roles = ['1070278187407388763', '1011635113928429651', '1070274725189787682', '1070308288404672612']
         nick = `▲`
     } else if (percentage[0] == `-`) {
         nick = `▼`
+        another_roles = ['1070376219230601316', '1052981220469919774', '1070378118562451488', '1070379081302032474']
         roles = ['1070278187407388763', '1011635113928429651', '1070274725189787682', '1070308485058801724']
     }
 
@@ -28,6 +30,18 @@ async function converter() {
         body: JSON.stringify({
             nick: `${nick} $ ↦ ₹: ${price}`,
             roles: roles
+        })
+    })
+
+    await fetch(`https://discord.com/api/guilds/${process.env.guild_id_2}/members/${process.env.usdinr_id}`, {
+        method: "PATCH",
+        headers: {
+            "Authorization": `Bot ${process.env.UI_TOKEN}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            nick: `${nick} $ ↦ ₹: ${price}`,
+            roles: another_roles
         })
     })
 }
