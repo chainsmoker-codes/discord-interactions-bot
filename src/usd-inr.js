@@ -26,7 +26,7 @@ async function converter() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            nick: `$ ↦ ₹: ${price}`,
+            nick: `${nick} $ ↦ ₹: ${price}`,
             roles: roles
         })
     })
