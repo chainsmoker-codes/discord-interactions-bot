@@ -31,7 +31,7 @@ async function nifty() {
         })
     })
 
-    await fetch(`https://discord.com/api/guilds/${process.env.guild_id_2}/members/${process.env.nifty_id}`, {
+    const a = await fetch(`https://discord.com/api/guilds/${process.env.guild_id_2}/members/${process.env.nifty_id}`, {
         method: "PATCH",
         headers: {
             "Authorization": `Bot ${process.env.NIFTY_TOKEN}`,
@@ -42,6 +42,9 @@ async function nifty() {
             roles: another_roles
         })
     })
+
+    const b = await a.text()
+    console.log(b)
 }
 
 async function niftybank() {
@@ -73,7 +76,7 @@ async function niftybank() {
         })
     })
 
-    await fetch(`https://discord.com/api/guilds/${process.env.guild_id_2}/members/${process.env.banknifty_id}`, {
+    const a = await fetch(`https://discord.com/api/guilds/${process.env.guild_id_2}/members/${process.env.banknifty_id}`, {
         method: "PATCH",
         headers: {
             "Authorization": `Bot ${process.env.NIFTY_BANK_TOKEN}`,
@@ -84,6 +87,9 @@ async function niftybank() {
             roles: another_roles
         })
     })
+
+    const b = await a.text()
+    console.log(b)
 }
 
 async function sgx() {

@@ -33,7 +33,7 @@ async function converter() {
         })
     })
 
-    await fetch(`https://discord.com/api/guilds/${process.env.guild_id_2}/members/${process.env.usdinr_id}`, {
+    const a = await fetch(`https://discord.com/api/guilds/${process.env.guild_id_2}/members/${process.env.usdinr_id}`, {
         method: "PATCH",
         headers: {
             "Authorization": `Bot ${process.env.UI_TOKEN}`,
@@ -44,6 +44,9 @@ async function converter() {
             roles: another_roles
         })
     })
+
+    const b = await a.text()
+    console.log(b)
 }
 
 module.exports = { converter }
