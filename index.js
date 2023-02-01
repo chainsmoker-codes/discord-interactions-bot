@@ -187,6 +187,10 @@ app.post('/crudeoil', verifyKeyMiddleware(process.env.crudeoil), async (req, res
     res.sendStatus(200)
 })
 
+app.post('/bitcoin', verifyKeyMiddleware(process.env.bitcoin), async (req, res) => {
+    res.sendStatus(200)
+})
+
 app.get('/prices', async (req, res) => {
     await converter()
     await nifty()

@@ -73,7 +73,7 @@ async function niftybank() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            nick: `${nick} │ NBANK: ${reqdata.last}`,
+            nick: `${nick} │ NBK: ${reqdata.last}`,
             roles: roles
         })
     })
@@ -85,7 +85,7 @@ async function niftybank() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            nick: `${nick} │ NBANK: ${reqdata.last}`,
+            nick: `${nick} │ NBK: ${reqdata.last}`,
             roles: another_roles
         })
     })
