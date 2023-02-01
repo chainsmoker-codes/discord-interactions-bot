@@ -200,9 +200,9 @@ app.post('/blahblahblah', verifyKeyMiddleware(process.env.blahblahblah), async (
     res.sendStatus(200)
 })
 
-app.post('/vix', verifyKeyMiddleware(process.env.vix), async (req, res) => {
-    res.sendStatus(200)
-})
+// app.post('/vix', verifyKeyMiddleware(process.env.vix), async (req, res) => {
+//     res.sendStatus(200)
+// })
 
 app.get('/prices', async (req, res) => {
     await converter()
