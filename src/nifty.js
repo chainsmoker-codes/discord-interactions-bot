@@ -27,3 +27,5 @@ async function nifty() {
         })
     })
 }
+
+module.exports = { nifty }
