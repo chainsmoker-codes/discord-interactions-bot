@@ -192,7 +192,11 @@ app.post('/bitcoin', verifyKeyMiddleware(process.env.bitcoin), async (req, res) 
     res.sendStatus(200)
 })
 
-app.post('/dji', verifyKeyMiddleware(process.env.blahblahblah), async (req, res) => {
+
+
+//DJI
+
+app.post('/blahblahblah', verifyKeyMiddleware(process.env.blahblahblah), async (req, res) => {
     res.sendStatus(200)
 })
 
