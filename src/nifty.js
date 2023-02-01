@@ -18,7 +18,7 @@ async function nifty() {
         console.log(`that`)
     }
 
-    await fetch(`https://discord.com/api/guilds/${process.env.guild_id}/members/${process.env.nifty_id}`, {
+    const response = await fetch(`https://discord.com/api/guilds/${process.env.guild_id}/members/${process.env.nifty_id}`, {
         method: "PATCH",
         headers: {
             "Authorization": `Bot ${process.env.DTC_TOKEN}`,
@@ -29,6 +29,9 @@ async function nifty() {
             roles: roles
         })
     })
+
+    const dataa = await response.text()
+    console.log(dataa)
 }
 
 module.exports = { nifty }
