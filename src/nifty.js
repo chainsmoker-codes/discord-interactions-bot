@@ -58,6 +58,7 @@ async function niftybank() {
 
     another_roles = ['1070376219230601316', '1052981220469919774', '1070377530659438624']
 
+    console.log(reqdata.percentChange)
 
     if(reqdata.percentChange.toString()[0] == `+`) {
         roles = ['1070278187407388763', '1011635113928429651', '1070273427954475020', '1070308288404672612']
