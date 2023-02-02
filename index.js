@@ -208,6 +208,7 @@ app.post('/vix', verifyKeyMiddleware(process.env.vix), async (req, res) => {
 app.get('/prices', async (req, res) => {
     const dtc_roles = ['1070278187407388763', '1011635113928429651']
     const another_roles = ['1070376219230601316', '1052981220469919774']
+
     await converter(dtc_roles, another_roles)
     await nifty(dtc_roles, another_roles)
     await niftybank(dtc_roles, another_roles)

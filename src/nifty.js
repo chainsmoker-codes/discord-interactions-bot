@@ -36,8 +36,6 @@ async function niftybank(dtc_roles, another_roles) {
     dtc_roles.push(`1070273427954475020`)
     another_roles.push(`1070377530659438624`)
 
-    console.log(reqdata.percentChange)
-
     if (reqdata.percentChange.toString()[0] == `-`) {
         dtc_roles.push(`1070308485058801724`)
         another_roles.push(`1070379081302032474`)
@@ -48,7 +46,7 @@ async function niftybank(dtc_roles, another_roles) {
         nick = `▲`
     }
 
-    await handler(process.env.guild_id, process.env.banknifty_id_id, process.env.DTC_TOKEN, nick, reqdata.last, dtc_roles, `NBF`)
+    await handler(process.env.guild_id, process.env.banknifty_id, process.env.DTC_TOKEN, nick, reqdata.last, dtc_roles, `NBF`)
     await handler(process.env.guild_id_2, process.env.banknifty_id, process.env.TWS_TOKEN, nick, reqdata.last, another_roles, `NBF`)
 
 }
@@ -73,7 +71,7 @@ async function sgx(dtc_roles, another_roles) {
         nick = `▲`
     }
 
-    await handler(process.env.guild_id, process.env.sgxnifty_id_id, process.env.DTC_TOKEN, nick, value, dtc_roles, `SGX`)
+    await handler(process.env.guild_id, process.env.sgxnifty_id, process.env.DTC_TOKEN, nick, value, dtc_roles, `SGX`)
     await handler(process.env.guild_id_2, process.env.sgxnifty_id, process.env.TWS_TOKEN, nick, value, another_roles, `SGX`)
 
 }
