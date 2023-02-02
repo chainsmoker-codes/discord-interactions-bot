@@ -6,6 +6,7 @@ const { modal_handler } = require('./modal-handler')
 const { converter } = require('./src/usd-inr')
 const { nifty, niftybank, sgx } = require('./src/nifty')
 const { bitchcoin } = require('./src/bitcoin')
+const { dji } = require('./src/dji')
 
 const app = express()
 
@@ -209,6 +210,7 @@ app.get('/prices', async (req, res) => {
     await nifty()
     await niftybank()
     await sgx()
+    await dji()
     await bitchcoin()
     res.sendStatus(200)
 })
