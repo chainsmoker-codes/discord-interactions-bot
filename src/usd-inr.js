@@ -2,12 +2,15 @@ const cheerio = require('cheerio')
 const fetch = require('node-fetch')
 const { handler } = require('./../Utils/handler')
 
-async function converter(dtc_roles, another_roles) {
+async function converter(one_role, two_role) {
     const response = await fetch('https://in.investing.com/currencies/usd-inr')
     const body = await response.text()
     const $ = cheerio.load(body)
     const price = $(".last-price-value.js-streamable-element").contents().first().text()
     const percentage = $("#js-main-container > section.main-container.container > div > header > div > div.last-price-and-wildcard > div.last-price > div.last.u-up > span.last-diff-percent > bdo > span").contents().first().text()
+
+    dtc_roles = one_role
+    another_roles = two_role
 
     dtc_roles.push(`1070274725189787682`)
     another_roles.push(`1070378118562451488`)

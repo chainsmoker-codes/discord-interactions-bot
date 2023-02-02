@@ -5,11 +5,14 @@ const { handler } = require('./../Utils/handler')
 
 const nse = new NseIndia()
 
-async function nifty(dtc_roles, another_roles) {
+async function nifty(one_role, two_role) {
     const data = await nse.getDataByEndpoint("/api/allIndices")
     const reqdata = data.data[0]
     var nick
     
+    dtc_roles = one_role
+    another_roles = two_role
+
     dtc_roles.push(`1070272067662008393`)
     another_roles.push(`1070377248013701162`)
 
@@ -28,10 +31,13 @@ async function nifty(dtc_roles, another_roles) {
     
 }
 
-async function niftybank(dtc_roles, another_roles) {
+async function niftybank(one_role, two_role) {
     const data = await nse.getDataByEndpoint("/api/allIndices")
     const reqdata = data.data[18]
     var nick
+
+    dtc_roles = one_role
+    another_roles = two_role
 
     dtc_roles.push(`1070273427954475020`)
     another_roles.push(`1070377530659438624`)
@@ -51,12 +57,15 @@ async function niftybank(dtc_roles, another_roles) {
 
 }
 
-async function sgx(dtc_roles, another_roles) {
+async function sgx(one_role, two_role) {
     const response = await fetch('https://sgxnifty.org/')
     const body = await response.text()
     const $ = cheerio.load(body)
     const value = $("#indexes-div > div:nth-child(1) > div:nth-child(3) > table > tbody > tr > td:nth-child(1)").text().trim()
     const percentage = $("#indexes-div > div:nth-child(1) > div:nth-child(3) > table > tbody > tr > td:nth-child(3)").contents().first().text()
+
+    dtc_roles = one_role
+    another_roles = two_role
 
     dtc_roles.push(`1070274133662892076`)
     another_roles.push(`1070377821643477105`)
