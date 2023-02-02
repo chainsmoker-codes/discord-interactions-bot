@@ -1,57 +1,32 @@
 const cheerio = require('cheerio')
 const fetch = require('node-fetch')
+const { handler } = require('./../Utils/handler')
 
-async function converter() {
+async function converter(dtc_roles, another_roles) {
     const response = await fetch('https://in.investing.com/currencies/usd-inr')
     const body = await response.text()
     const $ = cheerio.load(body)
     const price = $(".last-price-value.js-streamable-element").contents().first().text()
     const percentage = $("#js-main-container > section.main-container.container > div > header > div > div.last-price-and-wildcard > div.last-price > div.last.u-up > span.last-diff-percent > bdo > span").contents().first().text()
 
-    let roles = []
-    var nick
-    another_roles = ['1070376219230601316', '1052981220469919774', '1070378118562451488']
+    dtc_roles.push(`1070274725189787682`)
+    another_roles.push(`1070378118562451488`)
 
-    if(percentage[0] == `+`) {
-        roles = ['1070278187407388763', '1011635113928429651', '1070274725189787682', '1070308288404672612']
-        nick = `▲`
-        another_roles.push(`1070378999710236732`)
-    } else if (percentage[0] == `-`) {
+    var nick
+
+    if (percentage[0] == `-`) {
         nick = `▼`
-        roles = ['1070278187407388763', '1011635113928429651', '1070274725189787682', '1070308485058801724']
+        dtc_roles.push(`1070308485058801724`)
         another_roles.push(`1070379081302032474`)
     } else {
-        nick = ``
+        dtc_roles.push(`1070308288404672612`)
+        another_roles.push(`1070378999710236732`)
+        nick = `▲`
     }
 
-    console.log(another_roles)
+    await handler(process.env.guild_id, process.env.usdinr_id, process.env.DTC_TOKEN, nick, price, dtc_roles, `$ ↔ ₹`)
+    await handler(process.env.guild_id_2, process.env.usdinr_id, process.env.TWS_TOKEN, nick, price, another_roles, `$ ↔ ₹`)
 
-    await fetch(`https://discord.com/api/guilds/${process.env.guild_id}/members/${process.env.usdinr_id}`, {
-        method: "PATCH",
-        headers: {
-            "Authorization": `Bot ${process.env.DTC_TOKEN}`,
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            nick: `${nick} │ $ ↔ ₹: ${price}`,
-            roles: roles
-        })
-    })
-
-    const a = await fetch(`https://discord.com/api/guilds/${process.env.guild_id_2}/members/${process.env.usdinr_id}`, {
-        method: "PATCH",
-        headers: {
-            "Authorization": `Bot ${process.env.TWS_TOKEN}`,
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            nick: `${nick} │ $ ↔ ₹: ${price}`,
-            roles: another_roles
-        })
-    })
-
-    const b = await a.text()
-    console.log(b + `usdinr`)
 }
 
 module.exports = { converter }
