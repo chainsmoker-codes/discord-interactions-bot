@@ -210,7 +210,9 @@ app.get('/prices', async (req, res) => {
     const another_roles = ['1070376219230601316', '1052981220469919774']
 
     await converter(dtc_roles, another_roles)
+    console.log(JSON.stringify(dtc_roles, another_roles) + ` after converter`)
     await nifty(dtc_roles, another_roles)
+    console.log(JSON.stringify(dtc_roles, another_roles) + ` after nifty`)
     await niftybank(dtc_roles, another_roles)
     await sgx(dtc_roles, another_roles)
     await dji(dtc_roles)
