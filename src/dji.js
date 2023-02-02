@@ -9,6 +9,8 @@ async function dji(one_role) {
     const price = $('#maincontent > div.region.region--intraday > div.column.column--aside > div > div.intraday__data > h2 > span').contents().first().text()
     const percent = $('#maincontent > div.region.region--intraday > div.column.column--aside > div > div.intraday__data > bg-quote > span.change--percent--q').contents().first().text()
 
+    console.log(price + ` DJI`)
+
     dtc_roles = one_role
 
     dtc_roles.push(`1070456854024564768`)
