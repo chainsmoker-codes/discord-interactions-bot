@@ -206,17 +206,17 @@ app.post('/vix', verifyKeyMiddleware(process.env.vix), async (req, res) => {
 })
 
 app.get('/prices', async (req, res) => {
-    const dtc_roles = ['1070278187407388763', '1011635113928429651']
-    const another_roles = ['1070376219230601316', '1052981220469919774']
+    const first_server_roles = ['1070278187407388763', '1011635113928429651']
+    const second_server_roles = ['1070376219230601316', '1052981220469919774']
 
-    await converter(dtc_roles, another_roles)
-    console.log(JSON.stringify(dtc_roles, another_roles) + ` after converter`)
-    await nifty(dtc_roles, another_roles)
-    console.log(JSON.stringify(dtc_roles, another_roles) + ` after nifty`)
-    await niftybank(dtc_roles, another_roles)
-    await sgx(dtc_roles, another_roles)
-    await dji(dtc_roles)
-    await bitchcoin(dtc_roles)
+    await converter(first_server_roles, second_server_roles)
+    console.log(JSON.stringify(first_server_roles, second_server_roles) + ` after converter`)
+    await nifty(first_server_roles, second_server_roles)
+    console.log(JSON.stringify(first_server_roles, second_server_roles) + ` after nifty`)
+    await niftybank(first_server_roles, second_server_roles)
+    await sgx(first_server_roles, second_server_roles)
+    await dji(first_server_roles)
+    await bitchcoin(first_server_roles)
     res.sendStatus(200)
 })
 
