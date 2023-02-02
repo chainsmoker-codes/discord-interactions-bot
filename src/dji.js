@@ -11,10 +11,10 @@ async function dji(dtc_roles) {
     dtc_roles.push(`1070456854024564768`)
 
     if(percent[0] == `-`) {
-        roles.push(`1070308485058801724`)
+        dtc_roles.push(`1070308485058801724`)
         nick = `▼`
     } else {
-        roles.push(`1070308288404672612`)
+        dtc_roles.push(`1070308288404672612`)
         nick = `▲`
     }
 
