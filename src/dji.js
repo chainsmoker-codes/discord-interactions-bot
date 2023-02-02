@@ -1,3 +1,6 @@
+const fetch = require('node-fetch')
+const cheerio = require('cheerio')
+
 async function dji() {
     const response = await fetch(`https://www.marketwatch.com/investing/index/djia`)
     const body = await response.text()
