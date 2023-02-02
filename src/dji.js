@@ -1,5 +1,6 @@
 const fetch = require('node-fetch')
 const cheerio = require('cheerio')
+const { handler } = require('./../Utils/handler')
 
 async function dji(dtc_roles) {
     const response = await fetch(`https://www.marketwatch.com/investing/index/djia`)

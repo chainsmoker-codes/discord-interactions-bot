@@ -1,5 +1,4 @@
 const fetch = require('node-fetch')
-const { handler } = require('./../Utils/handler')
 
 async function handler(guild_id, target_id, token, nick, price, roles, name) {
     const a = await fetch(`https://discord.com/api/guilds/${guild_id}/members/${target_id}`, {
