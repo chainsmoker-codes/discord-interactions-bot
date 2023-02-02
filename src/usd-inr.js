@@ -20,6 +20,8 @@ async function converter() {
         nick = `▼`
         roles = ['1070278187407388763', '1011635113928429651', '1070274725189787682', '1070308485058801724']
         another_roles.push(`1070379081302032474`)
+    } else {
+        nick = ``
     }
 
     console.log(another_roles)
@@ -49,7 +51,7 @@ async function converter() {
     })
 
     const b = await a.text()
-    console.log(b)
+    console.log(b + `usdinr`)
 }
 
 module.exports = { converter }

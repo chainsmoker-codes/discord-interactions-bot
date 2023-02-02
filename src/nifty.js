@@ -19,6 +19,8 @@ async function nifty() {
         nick = `▼`
         roles = ['1070278187407388763', '1011635113928429651', '1070272067662008393', '1070308485058801724']
         another_roles.push(`1070379081302032474`)
+    } else {
+        nick = ''
     }
 
     await fetch(`https://discord.com/api/guilds/${process.env.guild_id}/members/${process.env.nifty_id}`, {
@@ -46,7 +48,7 @@ async function nifty() {
     })
 
     const b = await a.text()
-    console.log(b)
+    console.log(b + `nifty`)
 }
 
 async function niftybank() {
@@ -64,6 +66,8 @@ async function niftybank() {
         another_roles = ['1070376219230601316', '1052981220469919774', '1070377530659438624', '1070379081302032474']
         roles = ['1070278187407388763', '1011635113928429651', '1070273427954475020', '1070308485058801724']
         console.log(nick)
+    } else {
+        nick = ``
     }
 
     await fetch(`https://discord.com/api/guilds/${process.env.guild_id}/members/${process.env.banknifty_id}`, {
@@ -91,7 +95,7 @@ async function niftybank() {
     })
 
     const b = await a.text()
-    console.log(b)
+    console.log(b + `bank`)
 }
 
 async function sgx() {
@@ -108,6 +112,8 @@ async function sgx() {
         nick = `▼`
         another_roles = ['1070376219230601316', '1052981220469919774', '1070377821643477105', '1070379081302032474']
         roles = ['1070278187407388763', '1011635113928429651', '1070274133662892076', '1070308485058801724']
+    } else {
+        nick = ``
     }
     await fetch(`https://discord.com/api/guilds/${process.env.guild_id}/members/${process.env.sgxnifty_id}`, {
         method: "PATCH",
