@@ -15,6 +15,7 @@ async function handler(guild_id, target_id, token, nick, price, roles, name) {
 
     const b = await a.text()
     console.log(b + ` ${name}`)
+    console.log(roles)
 }
 
 module.exports = { handler }
