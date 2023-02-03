@@ -19,7 +19,7 @@ async function vix(one_role) {
         nick = `▲`
     }
 
-    await handler(process.env.guild_id, process.env.dji_id, process.env.DTC_TOKEN, nick, value, dtc_roles, `VIX`)
+    await handler(process.env.guild_id, process.env.vix_id, process.env.DTC_TOKEN, nick, value, dtc_roles, `VIX`)
 }
 
 module.exports = { vix }
