@@ -8,6 +8,7 @@ const { nifty, niftybank, sgx } = require('./src/nifty')
 const { bitchcoin } = require('./src/bitcoin')
 const { dji } = require('./src/dji')
 const { vix } = require('./src/vix')
+const { crude } = require('./src/crude')
 
 const app = express()
 
@@ -242,6 +243,9 @@ app.get('/others', async (req, res) => {
     first_server_roles.pop()
     first_server_roles.pop()
     await vix(first_server_roles)
+    first_server_roles.pop()
+    first_server_roles.pop()
+    await crude(first_server_roles)
     first_server_roles.pop()
     first_server_roles.pop()
     res.sendStatus(200)

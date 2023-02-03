@@ -21,3 +21,5 @@ async function crude(new_roles) {
     await handler(process.env.guild_id, process.env.crude_id, process.env.DTC_TOKEN, nick, value, dtc_roles, `OIL`)
 
 }
+
+module.exports = { crude }
