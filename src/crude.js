@@ -2,7 +2,7 @@ const yahoo = require('yahoo-finance')
 const { handler } = require('./../Utils/handler')
 
 async function crude(new_roles) {
-    const { price } = await yahoo.quore("CL=F")
+    const { price } = await yahoo.quote("CL=F")
     const percent = price.regularMarketChangePercent.toString()
     const value = price.regularMarketPrice
 
