@@ -6,7 +6,7 @@ async function dji(one_role) {
     const { price } = await yahoo.quote('%5EDJI')
 
     const value = price.regularMarketPrice
-    const percent = results.price.regularMarketChangePercent.toString()
+    const percent = price.regularMarketChangePercent.toString()
 
     dtc_roles = one_role
 
