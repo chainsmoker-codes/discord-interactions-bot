@@ -1,15 +1,12 @@
-const fetch = require('node-fetch')
-const cheerio = require('cheerio')
+const yahoo = require('yahoo-finance')
 const { handler } = require('./../Utils/handler')
 
 async function dji(one_role) {
-    const response = await fetch(`https://www.marketwatch.com/investing/index/djia`)
-    const body = await response.text()
-    const $ = cheerio.load(body)
-    const price = $('#maincontent > div.region.region--intraday > div.column.column--aside > div > div.intraday__data > h2 > bg-quote').contents().first().text()
-    const percent = $('#maincontent > div.region.region--intraday > div.column.column--aside > div > div.intraday__data > bg-quote > span.change--percent--q').contents().first().text()
 
-    console.log(price + ` DJI`)
+    const { price } = await yahoo.quote('%5EDJI')
+
+    const value = price.regularMarketPrice
+    const percent = results.price.regularMarketChangePercent.toString()
 
     dtc_roles = one_role
 
@@ -23,7 +20,7 @@ async function dji(one_role) {
         nick = `▲`
     }
 
-    await handler(process.env.guild_id, process.env.dji_id, process.env.DTC_TOKEN, nick, price, dtc_roles, `DJI`)
+    await handler(process.env.guild_id, process.env.dji_id, process.env.DTC_TOKEN, nick, value, dtc_roles, `DJI`)
 }
 
 module.exports = { dji }
