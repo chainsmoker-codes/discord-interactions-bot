@@ -52,8 +52,8 @@ async function niftybank(one_role, two_role) {
         nick = `▲`
     }
 
-    await handler(process.env.guild_id, process.env.banknifty_id, process.env.DTC_TOKEN, nick, reqdata.last, dtc_roles, `NBF`)
-    await handler(process.env.guild_id_2, process.env.banknifty_id, process.env.TWS_TOKEN, nick, reqdata.last, another_roles, `NBF`)
+    await handler(process.env.guild_id, process.env.banknifty_id, process.env.DTC_TOKEN, nick, reqdata.last, dtc_roles, `BNF`)
+    await handler(process.env.guild_id_2, process.env.banknifty_id, process.env.TWS_TOKEN, nick, reqdata.last, another_roles, `BNF`)
 
 }
 
