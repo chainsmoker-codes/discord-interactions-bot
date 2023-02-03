@@ -1,7 +1,7 @@
 const yahoo = require('yahoo-finance')
 const { handler } = require('./../Utils/handler')
 
-async function vix() {
+async function vix(one_role) {
     const { price } = await yahoo.quote('%5EINDIAVIX')
 
     const value = price.regularMarketPrice
