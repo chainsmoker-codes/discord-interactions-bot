@@ -4,7 +4,7 @@ const { handler } = require('./../Utils/handler')
 async function nasdaq(one_role) {
     const { price } = await yahoo.quote('%5EIXIC')
 
-    const value = price.reqularMarketPrice
+    const value = price.regularMarketPrice
     const percent = price.regularMarketChangePercent.toString()
 
     dtc_roles.push(`1072204938400239717`)
