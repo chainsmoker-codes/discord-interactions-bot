@@ -9,6 +9,7 @@ const { bitchcoin } = require('./src/bitcoin')
 const { dji } = require('./src/dji')
 const { vix } = require('./src/vix')
 const { crude } = require('./src/crude')
+const { nasdaq } = require('./src/nasdaq')
 
 const app = express()
 
@@ -196,7 +197,6 @@ app.post('/bitcoin', verifyKeyMiddleware(process.env.bitcoin), async (req, res) 
 })
 
 
-
 //DJI
 
 app.post('/blahblahblah', verifyKeyMiddleware(process.env.blahblahblah), async (req, res) => {
@@ -204,6 +204,10 @@ app.post('/blahblahblah', verifyKeyMiddleware(process.env.blahblahblah), async (
 })
 
 app.post('/vix', verifyKeyMiddleware(process.env.vix), async (req, res) => {
+    res.sendStatus(200)
+})
+
+app.post('/nasdaq', verifyKeyMiddleware(process.env.nasdaq), async (req, res) => {
     res.sendStatus(200)
 })
 
@@ -246,6 +250,9 @@ app.get('/others', async (req, res) => {
     first_server_roles.pop()
     first_server_roles.pop()
     await crude(first_server_roles)
+    first_server_roles.pop()
+    first_server_roles.pop()
+    await nasdaq(first_server_roles)
     first_server_roles.pop()
     first_server_roles.pop()
     res.sendStatus(200)
