@@ -5,7 +5,7 @@ async function nasdaq(one_role) {
     const { price } = await yahoo.quote('%5EIXIC')
 
     const value = price.reqularMarketPrice
-    const percent = price.regularMarketChanegPercent.toString()
+    const percent = price.regularMarketChangePercent.toString()
 
     dtc_roles.push(`1072204938400239717`)
 
