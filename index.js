@@ -3,13 +3,6 @@ const fetch = require('node-fetch')
 const { verifyKeyMiddleware } = require('discord-interactions')
 const { update_roles } = require('./role-update')
 const { modal_handler } = require('./modal-handler')
-const { converter } = require('./src/usd-inr')
-const { nifty, niftybank, sgx } = require('./src/nifty')
-const { bitchcoin } = require('./src/bitcoin')
-const { dji } = require('./src/dji')
-const { vix } = require('./src/vix')
-const { crude } = require('./src/crude')
-const { nasdaq } = require('./src/nasdaq')
 
 const app = express()
 
@@ -172,90 +165,5 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
     }
 })
 
-app.post('/nifty', verifyKeyMiddleware(process.env.nifty), async (req, res) => {
-    res.sendStatus(200)
-})
-
-app.post('/banknifty', verifyKeyMiddleware(process.env.banknifty), async (req, res) => {
-    res.sendStatus(200)
-})
-
-app.post('/sgxnifty', verifyKeyMiddleware(process.env.sgxnifty), async (req, res) => {
-    res.sendStatus(200)
-})
-
-app.post('/usdinr', verifyKeyMiddleware(process.env.usdinr), async (req, res) => {
-    res.sendStatus(200)
-})
-
-app.post('/crudeoil', verifyKeyMiddleware(process.env.crudeoil), async (req, res) => {
-    res.sendStatus(200)
-})
-
-app.post('/bitcoin', verifyKeyMiddleware(process.env.bitcoin), async (req, res) => {
-    res.sendStatus(200)
-})
-
-
-//DJI
-
-app.post('/blahblahblah', verifyKeyMiddleware(process.env.blahblahblah), async (req, res) => {
-    res.sendStatus(200)
-})
-
-app.post('/vix', verifyKeyMiddleware(process.env.vix), async (req, res) => {
-    res.sendStatus(200)
-})
-
-app.post('/nasdaq', verifyKeyMiddleware(process.env.nasdaq), async (req, res) => {
-    res.sendStatus(200)
-})
-
-app.get('/prices', async (req, res) => {
-    const first_server_roles = ['1070278187407388763', '1011635113928429651']
-    const second_server_roles = ['1070376219230601316', '1052981220469919774']
-
-    await converter(first_server_roles, second_server_roles)
-    first_server_roles.pop()
-    first_server_roles.pop()
-    second_server_roles.pop()
-    second_server_roles.pop()
-    await nifty(first_server_roles, second_server_roles)
-    first_server_roles.pop()
-    first_server_roles.pop()
-    second_server_roles.pop()
-    second_server_roles.pop()
-    await niftybank(first_server_roles, second_server_roles)
-    first_server_roles.pop()
-    first_server_roles.pop()
-    second_server_roles.pop()
-    second_server_roles.pop()
-    await sgx(first_server_roles, second_server_roles)
-    first_server_roles.pop()
-    first_server_roles.pop()
-    second_server_roles.pop()
-    second_server_roles.pop()
-    res.sendStatus(200)
-})
-
-app.get('/others', async (req, res) => {
-    const first_server_roles = ['1070278187407388763', '1011635113928429651']
-    await dji(first_server_roles)
-    first_server_roles.pop()
-    first_server_roles.pop()
-    await bitchcoin(first_server_roles)
-    first_server_roles.pop()
-    first_server_roles.pop()
-    await vix(first_server_roles)
-    first_server_roles.pop()
-    first_server_roles.pop()
-    await crude(first_server_roles)
-    first_server_roles.pop()
-    first_server_roles.pop()
-    await nasdaq(first_server_roles)
-    first_server_roles.pop()
-    first_server_roles.pop()
-    res.sendStatus(200)
-})
 
 app.listen("3000", () => console.log(`Server Is Running, You better catch it!`))
