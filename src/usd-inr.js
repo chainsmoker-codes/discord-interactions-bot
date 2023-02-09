@@ -1,13 +1,11 @@
-const cheerio = require('cheerio')
-const fetch = require('node-fetch')
+const yahoo = require('yahoo-finance')
 const { handler } = require('./../Utils/handler')
 
 async function converter(one_role, two_role) {
-    const response = await fetch('https://in.investing.com/currencies/usd-inr')
-    const body = await response.text()
-    const $ = cheerio.load(body)
-    const price = $(".last-price-value.js-streamable-element").contents().first().text()
-    const percentage = $("#js-main-container > section.main-container.container > div > header > div > div.last-price-and-wildcard > div.last-price > div.last.u-up > span.last-diff-percent > bdo > span").contents().first().text()
+    const { price } = await yahoo.quote('INR=X')
+
+    const value = price.regularMarketPrice
+    const percent = price.regularMarketChangePercent.toString()
 
     dtc_roles = one_role
     another_roles = two_role
@@ -27,8 +25,8 @@ async function converter(one_role, two_role) {
         nick = `▲`
     }
 
-    await handler(process.env.guild_id, process.env.usdinr_id, process.env.DTC_TOKEN, nick, price, dtc_roles, `$ ↔ ₹`)
-    await handler(process.env.guild_id_2, process.env.usdinr_id, process.env.TWS_TOKEN, nick, price, another_roles, `$ ↔ ₹`)
+    await handler(process.env.guild_id, process.env.usdinr_id, process.env.DTC_TOKEN, nick, value, dtc_roles, `$ ↔ ₹`)
+    await handler(process.env.guild_id_2, process.env.usdinr_id, process.env.TWS_TOKEN, nick, value, another_roles, `$ ↔ ₹`)
 
 }
 
