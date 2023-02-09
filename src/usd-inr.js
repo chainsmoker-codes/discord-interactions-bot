@@ -15,7 +15,7 @@ async function converter(one_role, two_role) {
 
     var nick
 
-    if (percentage[0] == `-`) {
+    if (percent[0] == `-`) {
         nick = `▼`
         dtc_roles.push(`1070308485058801724`)
         another_roles.push(`1070379081302032474`)
